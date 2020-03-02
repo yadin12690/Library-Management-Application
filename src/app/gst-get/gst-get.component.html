@@ -1,0 +1,55 @@
+<div class="container">
+  <div class="row">
+    <div class="search-book">
+      <input class="form-control" [(ngModel)]="term" type="text" name="search" autocomplete="off"
+        placeholder="&#61442; search for a book">
+    </div>
+  </div>
+</div>
+
+
+<div class=container>
+  <div class="col-xs-12 col-md-6" *ngFor="let book of books | filter:term">
+    <!-- First product box start here-->
+    <div class="prod-info-main prod-wrap clearfix">
+      <div class="row">
+        <div class="col-md-5 col-sm-12 col-xs-12">
+          <div class="product-image">
+            <img src="{{ book.cover_photo }}" alt="" class="img-responsive">
+          </div>
+        </div>
+        <div class="col-md-7 col-sm-12 col-xs-12">
+          <div class="product-deatil">
+            <h5 class="name">
+              <a href="#">
+                {{ book.author_name }}
+              </a>
+            </h5>
+            <p class="price-container">
+              <span>{{ book.book_name }}</span>
+            </p>
+            <span class="tag1"></span>
+          </div>
+          <div class="description">
+            <span class="label label-info">Publication Date</span>
+            <p>{{ book.publication_date }}</p>
+          </div>
+          <div class="product-info smart-form">
+            <div class="row">
+              <div class="col-md-12">
+                <a [routerLink]="['edit', book._id]" class="btn btn-info">Edit</a>
+                <a (click)="deleteBook(book._id)" class="btn btn-danger">Delete</a>
+              </div>
+              <div class="col-md-12">
+                <div class="rating">Catalog Number:
+                  <label>{{ book.catalog_number }}</label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- end product -->
+  </div>
+</div>

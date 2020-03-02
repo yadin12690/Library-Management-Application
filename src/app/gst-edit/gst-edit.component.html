@@ -1,0 +1,56 @@
+<div class="card">
+  <div class="card-body">
+    <form [formGroup]="angForm" novalidate>
+      <div class="form-group">
+        <label class="col-md-4">Author Name</label>
+        <input type="text" class="form-control" formControlName="author_name" #author_name [(ngModel)] = "books.author_name" />
+      </div>
+      <div *ngIf="angForm.controls['author_name'].invalid && (angForm.controls['author_name'].dirty || angForm.controls['author_name'].touched)" class="alert alert-danger">
+        <div *ngIf="angForm.controls['author_name'].errors.required">
+          Author Name is required.
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-md-4">Book Name </label>
+        <input type="text" class="form-control" formControlName="book_name" #book_name [(ngModel)] = "books.book_name" />
+      </div>
+      <div *ngIf="angForm.controls['book_name'].invalid && (angForm.controls['book_name'].dirty || angForm.controls['book_name'].touched)" class="alert alert-danger">
+        <div *ngIf="angForm.controls['book_name'].errors.required">
+          Book Name is required.
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-md-4">Catalog Number </label>
+        <input type="text" class="form-control" formControlName="catalog_number" #catalog_number [(ngModel)] = "books.catalog_number" />
+      </div>
+      <div *ngIf="angForm.controls['catalog_number'].invalid && (angForm.controls['catalog_number'].dirty || angForm.controls['catalog_number'].touched)" class="alert alert-danger">
+        <div *ngIf="angForm.controls['catalog_number'].errors.required">
+          Catalog Number is required.
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-md-4">Publication Date</label>
+        <input type="text" class="form-control" formControlName="publication_date" #publication_date [(ngModel)] = "books.publication_date" />
+      </div>
+      <div *ngIf="angForm.controls['publication_date'].invalid && (angForm.controls['publication_date'].dirty || angForm.controls['publication_date'].touched)" class="alert alert-danger">
+        <div *ngIf="angForm.controls['publication_date'].errors.required">
+          Publication date is required.
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-md-4">Cover Photo</label>
+        <input type="text" class="form-control" formControlName="cover_photo" #cover_photo [(ngModel)] = "books.cover_photo" />
+      </div>
+      <div *ngIf="angForm.controls['cover_photo'].invalid && (angForm.controls['cover_photo'].dirty || angForm.controls['cover_photo'].touched)" class="alert alert-danger">
+        <div *ngIf="angForm.controls['cover_photo'].errors.required">
+          Cover photo is required.
+        </div>
+      </div>
+      <div class="form-group">
+        <button (click)="updateBooks(author_name.value, book_name.value, catalog_number.value, publication_date.value,cover_photo.value)"
+        [disabled]="angForm.invalid" 
+        class="btn btn-primary">Update Book</button>
+      </div>
+    </form>
+  </div>
+</div>
